@@ -2,1126 +2,267 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-    <title>Помощь программисту · Влад Б.</title>
-    <!-- Google Fonts & Font Awesome -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Влад Б. — дизайн и вёрстка</title>
     <style>
-        /* ——— ТЁМНАЯ ТЕМА ——— */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0b0f1a;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0b0d0f;
+            color: #eaeef2;
             min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             padding: 20px;
-            color: #e8edf5;
         }
-
-        /* ——— карточка ——— */
         .card {
-            max-width: 1100px;
+            background: #15191e;
+            max-width: 800px;
             width: 100%;
-            background: #141a26;
-            border-radius: 40px;
-            padding: 2.5rem 2.8rem 2.2rem;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(2px);
-            transition: padding 0.2s ease, opacity 0.7s ease, transform 0.7s ease;
-            opacity: 0;
-            transform: translateY(20px);
+            padding: 40px 35px;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            text-align: center;
+            border: 1px solid #2a3138;
         }
-
-        .card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ——— шапка ——— */
-        .header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.9rem;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: #e8edf5;
-        }
-
-        .logo i {
-            color: #5b8cff;
-            font-size: 2.1rem;
-        }
-
-        .status-badge {
-            background: #1e283a;
-            padding: 0.4rem 1.3rem;
-            border-radius: 60px;
-            font-size: 0.85rem;
+        h1 {
+            font-size: 2.6rem;
             font-weight: 600;
-            color: #b0c6e8;
-            border: 1px solid rgba(91, 140, 255, 0.15);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            white-space: nowrap;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
         }
-
-        .status-badge i {
-            font-size: 0.7rem;
-            color: #5b8cff;
-        }
-
-        /* ——— герой ——— */
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 2rem 3rem;
-            margin-bottom: 3.2rem;
-        }
-
-        .hero-content {
-            flex: 1 1 280px;
-        }
-
-        .hero-content .label {
-            display: inline-block;
-            background: #1e283a;
-            padding: 0.2rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            color: #8aadff;
-            margin-bottom: 0.8rem;
-        }
-
-        .hero-content h1 {
-            font-size: 2.9rem;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.6rem;
-            color: #e8edf5;
-        }
-
-        .hero-content h1 span {
-            color: #5b8cff;
-        }
-
-        .hero-content p {
+        .subhead {
             font-size: 1.1rem;
-            color: #9aabc9;
-            max-width: 420px;
-            margin-bottom: 2rem;
-            line-height: 1.6;
+            color: #a0abb8;
+            margin-bottom: 28px;
+            line-height: 1.5;
         }
-
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            align-items: center;
-        }
-
-        .btn-project, .btn-deepseek, .btn-suno, .btn-javascript {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.85rem 2.2rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            transition: 0.15s ease;
-            text-decoration: none;
-        }
-
-        .btn-project {
-            background: #1a2a1f;
-            color: #b8e8c8;
-            border: 1.5px solid #3e8a5b;
-            box-shadow: 0 8px 24px rgba(62, 138, 91, 0.2);
-        }
-
-        .btn-project i {
-            color: #85ffa8;
-        }
-
-        .btn-project:hover {
-            background: #2a553a;
-            border-color: #66cc8a;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(62, 138, 91, 0.3);
-        }
-
-        .btn-deepseek {
-            background: #1a1a2e;
-            color: #c8b8e8;
-            border: 1.5px solid #4a3a7a;
-            box-shadow: 0 8px 24px rgba(74, 58, 122, 0.2);
-        }
-
-        .btn-deepseek i {
-            color: #a885ff;
-        }
-
-        .btn-deepseek:hover {
-            background: #2a2a4a;
-            border-color: #7a5aaa;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(74, 58, 122, 0.3);
-        }
-
-        .btn-suno {
-            background: #1a2a1f;
-            color: #b8e8c8;
-            border: 1.5px solid #3e8a5b;
-            box-shadow: 0 8px 24px rgba(62, 138, 91, 0.2);
-        }
-
-        .btn-suno i {
-            color: #85ffa8;
-        }
-
-        .btn-suno:hover {
-            background: #2a553a;
-            border-color: #66cc8a;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(62, 138, 91, 0.3);
-        }
-
-        .btn-javascript {
-            background: #2a1a1a;
-            color: #e8c8b8;
-            border: 1.5px solid #8a3a3a;
-            box-shadow: 0 8px 24px rgba(138, 58, 58, 0.2);
-        }
-
-        .btn-javascript i {
-            color: #ff8a5a;
-        }
-
-        .btn-javascript:hover {
-            background: #4a2a2a;
-            border-color: #cc5a5a;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(138, 58, 58, 0.3);
-        }
-
-        /* ——— аватар ——— */
-        .hero-avatar {
-            flex: 0 0 180px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .avatar {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #1e283a, #2a3650);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: #8aadff;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-            border: 4px solid #1e283a;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .avatar:hover {
-            transform: scale(1.05);
-        }
-
-        /* ——— сетка преимуществ (3 колонки) ——— */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 2.8rem 0 3rem;
-        }
-
-        .feature {
-            background: #10161f;
-            padding: 1.2rem 0.8rem 1.4rem;
-            border-radius: 28px;
-            text-align: center;
-            border: 1px solid #1e283a;
-            transition: 0.15s;
-            cursor: default;
-        }
-
-        .feature:hover {
-            border-color: #5b8cff;
-            background: #181f2d;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(91, 140, 255, 0.06);
-        }
-
-        .feature i {
-            font-size: 2rem;
-            color: #5b8cff;
-            background: #1e283a;
-            padding: 0.6rem;
-            border-radius: 18px;
-            margin-bottom: 0.6rem;
+        .badge {
             display: inline-block;
-        }
-
-        .feature h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #e8edf5;
-        }
-
-        .feature p {
-            font-size: 0.8rem;
-            color: #7a8aaa;
-            margin-top: 0.1rem;
-        }
-
-        /* ——— счётчик ——— */
-        .counter-section {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            background: #10161f;
-            border-radius: 32px;
-            padding: 1.8rem 1.5rem;
-            margin: 1.5rem 0 2.5rem;
-            border: 1px solid #1e283a;
-        }
-
-        .counter-item {
-            text-align: center;
-            min-width: 80px;
-        }
-
-        .counter-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #e8edf5;
-            letter-spacing: -0.02em;
-        }
-
-        .counter-number i {
-            color: #5b8cff;
-            font-size: 1.8rem;
-            margin-right: 4px;
-        }
-
-        .counter-label {
-            font-size: 0.8rem;
-            color: #7a8aaa;
-            font-weight: 500;
-            margin-top: 2px;
-        }
-
-        /* ——— НОВЫЙ БЛОК: полезные ссылки для программистов ——— */
-        .resources-section {
-            margin: 2rem 0 2.5rem;
-            border-top: 1px solid #1e283a;
-            padding-top: 2rem;
-        }
-
-        .resources-section h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #b0c6e8;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .resources-section h2 i {
-            color: #5b8cff;
-            font-size: 1.5rem;
-        }
-
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1rem;
-        }
-
-        .resource-link {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: #10161f;
-            padding: 0.8rem 1.2rem;
-            border-radius: 16px;
-            border: 1px solid #1e283a;
-            text-decoration: none;
-            color: #b0c6e8;
-            font-weight: 500;
+            background: #1f2a33;
+            padding: 6px 18px;
+            border-radius: 40px;
             font-size: 0.9rem;
-            transition: 0.15s;
+            color: #b6c4d0;
+            margin-bottom: 30px;
         }
-
-        .resource-link i {
-            font-size: 1.2rem;
-            color: #5b8cff;
-            width: 1.5rem;
-            text-align: center;
-        }
-
-        .resource-link:hover {
-            border-color: #5b8cff;
-            background: #181f2d;
-            transform: translateY(-2px);
-            color: #e8edf5;
-            box-shadow: 0 6px 16px rgba(91, 140, 255, 0.06);
-        }
-
-        /* ——— МИНИ-КЛИКЕР ——— */
-        .clicker-section {
-            margin: 1.5rem 0 1.5rem;
-            padding: 1.8rem 1.5rem;
-            background: #10161f;
-            border-radius: 32px;
-            border: 1px solid #1e283a;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .clicker-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(91, 140, 255, 0.03) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .clicker-section h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #b0c6e8;
-            margin-bottom: 0.8rem;
+        .features {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 0.6rem;
-            position: relative;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0 35px;
         }
-
-        .clicker-section h3 i {
-            color: #f5b342;
-            font-size: 1.4rem;
-        }
-
-        .clicker-display {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #e8edf5;
-            margin-bottom: 1rem;
-            letter-spacing: 0.02em;
-            position: relative;
-        }
-
-        .clicker-display span {
-            color: #5b8cff;
-            font-size: 3.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .clicker-display .highlight {
-            color: #ff8a5a;
-        }
-
-        .clicker-btn {
-            background: #2a1a1a;
-            color: #e8c8b8;
-            border: 2px solid #8a3a3a;
-            padding: 0.85rem 2.5rem;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.15s ease;
-            box-shadow: 0 8px 24px rgba(138, 58, 58, 0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            position: relative;
-            text-decoration: none;
-        }
-
-        .clicker-btn i {
-            color: #ff8a5a;
-            font-size: 1.3rem;
-        }
-
-        .clicker-btn:hover {
-            background: #4a2a2a;
-            border-color: #cc5a5a;
-            transform: scale(1.03);
-            box-shadow: 0 12px 32px rgba(138, 58, 58, 0.3);
-        }
-
-        .clicker-btn:active {
-            transform: scale(0.95);
-        }
-
-        .clicker-btn.unlocked {
-            background: #1a2a1f;
-            border-color: #3e8a5b;
-            box-shadow: 0 8px 24px rgba(62, 138, 91, 0.3);
-            color: #b8e8c8;
-        }
-
-        .clicker-btn.unlocked i {
-            color: #85ffa8;
-        }
-
-        .clicker-btn.unlocked:hover {
-            background: #2a553a;
-            border-color: #66cc8a;
-            transform: scale(1.03);
-            box-shadow: 0 12px 32px rgba(62, 138, 91, 0.3);
-        }
-
-        .clicker-reset {
-            background: transparent;
-            border: none;
-            color: #4a5a7a;
-            font-size: 0.8rem;
-            cursor: pointer;
-            margin-top: 0.8rem;
-            transition: 0.15s;
-            text-decoration: underline;
-            opacity: 0.6;
-            position: relative;
-        }
-
-        .clicker-reset:hover {
-            opacity: 1;
-            color: #b0c6e8;
-        }
-
-        /* ——— контакты (УДАЛЕНЫ) ——— */
-
-        .footer-note {
-            font-size: 0.8rem;
-            color: #4a5a7a;
-            text-align: center;
-            margin-top: 1.5rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid #1e283a;
-            letter-spacing: 0.01em;
-        }
-
-        .footer-note i.fa-heart {
-            color: #5b8cff;
-        }
-
-        /* ——— тост ——— */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(80px);
-            background: #1e283a;
-            color: #e8edf5;
-            padding: 0.9rem 2rem;
+        .feature {
+            background: #1e262e;
+            padding: 14px 24px;
             border-radius: 60px;
             font-weight: 500;
             font-size: 0.95rem;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: 999;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            border: 1px solid rgba(91, 140, 255, 0.15);
+            color: #d3dce6;
+            border: 1px solid #2d3842;
+        }
+        .clicker-area {
+            background: #1a2128;
+            padding: 25px 20px;
+            border-radius: 24px;
+            margin: 10px 0 25px;
+            border: 1px solid #2a333c;
+        }
+        .clicker-area p {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #cbd5e0;
+        }
+        .click-btn {
+            background: #2d8cff;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            padding: 12px 40px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 6px 0 #1a4f8c;
+            display: inline-block;
+        }
+        .click-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 1px 0 #1a4f8c;
+        }
+        .click-count {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: white;
+            margin: 15px 0 5px;
+        }
+        .footer-message {
+            background: #1f2a33;
+            padding: 14px;
+            border-radius: 60px;
+            color: #b6c9db;
+            font-size: 0.95rem;
+            border: 1px solid #2d3842;
+            margin-top: 15px;
+        }
+        .footer-message span {
+            color: #6f8fb0;
+        }
+        .contact-btn {
+            background: transparent;
+            border: 2px solid #2d8cff;
+            color: #2d8cff;
+            padding: 12px 32px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 20px;
+        }
+        .contact-btn:hover {
+            background: #2d8cff;
+            color: white;
         }
 
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
+        /* БЛОК СО ССЫЛКАМИ — РАСШИРЕННЫЙ */
+        .links-section {
+            margin: 25px 0 15px;
+            text-align: left;
+        }
+        .links-section h3 {
+            font-size: 1rem;
+            color: #889fb3;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+            text-align: center;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 10px;
+        }
+        .links-grid a {
+            color: #8aadcf;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 14px;
+            border-radius: 40px;
+            background: #1a222a;
+            border: 1px solid #2d3842;
+            transition: 0.2s;
+            text-align: center;
+            display: block;
+        }
+        .links-grid a:hover {
+            background: #2d8cff;
+            color: white;
+            border-color: #2d8cff;
+            transform: scale(1.02);
+        }
+        .links-divider {
+            color: #3f4d5a;
+            font-size: 0.8rem;
+            text-align: center;
+            margin: 15px 0 10px;
+            letter-spacing: 1px;
         }
 
-        .toast i {
-            color: #5b8cff;
-        }
-
-        /* ——— АДАПТИВНОСТЬ ——— */
-        @media (max-width: 850px) {
-            .card {
-                padding: 2rem 1.8rem;
-            }
-            .hero-content h1 {
-                font-size: 2.4rem;
-            }
-            .hero-avatar {
-                flex-basis: 150px;
-            }
-            .avatar {
-                width: 150px;
-                height: 150px;
-                font-size: 4.2rem;
-            }
-            .counter-section {
-                padding: 1.5rem 1rem;
-            }
-            .btn-project, .btn-deepseek, .btn-suno, .btn-javascript {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.9rem;
-            }
-            .features-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
-            }
-            .resources-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            }
-            .clicker-display {
-                font-size: 2.5rem;
-            }
-            .clicker-display span {
-                font-size: 3rem;
-            }
-        }
-
-        @media (max-width: 680px) {
-            body {
-                padding: 12px;
-            }
-            .card {
-                padding: 1.8rem 1.5rem;
-                border-radius: 32px;
-            }
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .status-badge {
-                align-self: flex-start;
-            }
-            .hero {
-                flex-direction: column-reverse;
-                align-items: center;
-                text-align: center;
-                gap: 1.5rem;
-            }
-            .hero-content p {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .actions {
-                justify-content: center;
-            }
-            .btn-project, .btn-deepseek, .btn-suno, .btn-javascript {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.9rem;
-                flex: 1 1 auto;
-                justify-content: center;
-                min-width: 120px;
-            }
-            .hero-avatar {
-                flex-basis: auto;
-            }
-            .avatar {
-                width: 130px;
-                height: 130px;
-                font-size: 3.6rem;
-            }
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-            .counter-section {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.2rem;
-            }
-            .resources-section h2 {
-                font-size: 1.1rem;
-            }
-            .resources-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.8rem;
-            }
-            .resource-link {
-                padding: 0.6rem 1rem;
-                font-size: 0.8rem;
-            }
-            .clicker-display {
-                font-size: 2.2rem;
-            }
-            .clicker-display span {
-                font-size: 2.6rem;
-            }
-            .clicker-btn {
-                padding: 0.7rem 2rem;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .card {
-                padding: 1.2rem 1rem;
-            }
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            .features-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.8rem;
-            }
-            .feature {
-                padding: 1rem 0.4rem;
-            }
-            .feature i {
-                font-size: 1.6rem;
-                padding: 0.4rem;
-            }
-            .btn-project, .btn-deepseek, .btn-suno, .btn-javascript {
-                width: 100%;
-                justify-content: center;
-                min-width: unset;
-            }
-            .actions {
-                width: 100%;
-            }
-            .counter-number {
-                font-size: 1.8rem;
-            }
-            .resources-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.6rem;
-            }
-            .resource-link {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.75rem;
-                gap: 0.5rem;
-            }
-            .resource-link i {
-                font-size: 1rem;
-                width: 1.2rem;
-            }
-            .clicker-display {
-                font-size: 1.8rem;
-            }
-            .clicker-display span {
-                font-size: 2.2rem;
-            }
-            .clicker-btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-            }
-            .clicker-section {
-                padding: 1rem;
-            }
+        .note {
+            font-size: 0.8rem;
+            color: #5f7387;
+            margin-top: 18px;
         }
     </style>
 </head>
 <body>
-    <div class="card" id="card">
 
-        <!-- HEADER -->
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-hands-helping"></i>
-                <span>Помощь программисту</span>
-            </div>
-            <div class="status-badge" id="statusBadge">
-                <i class="fas fa-circle" style="font-size: 0.5rem;"></i> 
-                <span id="statusText">всегда на связи</span>
-            </div>
-        </header>
+<div class="card">
 
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="label">
-                    <i class="fas fa-sparkles" style="margin-right: 4px;"></i> персональная визитка
-                </div>
-                <h1>
-                    Влад <span>Б.</span>
-                </h1>
-                <p id="greetingText">
-                    Помогаю брендам и специалистам выглядеть уверенно в цифровой среде. 
-                    Лаконичный дизайн, чистая вёрстка, внимание к деталям.
-                </p>
-                <div class="actions">
-                    <a href="https://suno.com/@xxxdel555" target="_blank" class="btn-project" id="projectBtn">
-                        <i class="fas fa-folder-open"></i> Мои проекты
-                    </a>
-                    <a href="https://deepseek.com" target="_blank" class="btn-deepseek" id="deepseekBtn">
-                        <i class="fas fa-brain"></i> DeepSeek
-                    </a>
-                    <a href="https://suno.com" target="_blank" class="btn-suno" id="sunoBtn">
-                        <i class="fas fa-music"></i> SUNO AI
-                    </a>
-                    <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript" target="_blank" class="btn-javascript" id="jsBtn">
-                        <i class="fab fa-js"></i> JavaScript
-                    </a>
-                </div>
-            </div>
-            <div class="hero-avatar">
-                <div class="avatar" id="avatar">
-                    <i class="fas fa-user-astronaut"></i>
-                </div>
-            </div>
-        </section>
-
-        <!-- СЧЁТЧИК -->
-        <div class="counter-section" id="counterSection">
-            <div class="counter-item">
-                <div class="counter-number" id="projectsCount">
-                    <i class="fas fa-folder-open"></i> <span id="projectsNum">0</span>
-                </div>
-                <div class="counter-label">Проектов</div>
-            </div>
-            <div class="counter-item">
-                <div class="counter-number" id="clientsCount">
-                    <i class="fas fa-users"></i> <span id="clientsNum">0</span>
-                </div>
-                <div class="counter-label">Клиентов</div>
-            </div>
-            <div class="counter-item">
-                <div class="counter-number" id="expCount">
-                    <i class="fas fa-calendar-check"></i> <span id="expNum">0</span>
-                </div>
-                <div class="counter-label">Лет опыта</div>
-            </div>
-        </div>
-
-        <!-- FEATURES (только 3: Дизайн, Адаптив, Скорость) -->
-        <div class="features-grid">
-            <div class="feature">
-                <i class="fas fa-pen-fancy"></i>
-                <h4>Дизайн</h4>
-                <p>Уникальный стиль</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-mobile-screen-button"></i>
-                <h4>Адаптив</h4>
-                <p>Работает везде</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-rocket"></i>
-                <h4>Скорость</h4>
-                <p>Оптимизация</p>
-            </div>
-        </div>
-
-        <!-- ===== ПОЛЕЗНЫЕ РЕСУРСЫ ===== -->
-        <div class="resources-section">
-            <h2>
-                <i class="fas fa-link"></i> Полезные ресурсы для программистов
-            </h2>
-            <div class="resources-grid">
-                <!-- ИИ-инструменты -->
-                <a href="https://chat.openai.com" target="_blank" class="resource-link">
-                    <i class="fas fa-robot"></i> ChatGPT
-                </a>
-                <a href="https://claude.ai" target="_blank" class="resource-link">
-                    <i class="fas fa-brain"></i> Claude
-                </a>
-                <a href="https://github.com/features/copilot" target="_blank" class="resource-link">
-                    <i class="fas fa-code"></i> GitHub Copilot
-                </a>
-                <a href="https://www.perplexity.ai" target="_blank" class="resource-link">
-                    <i class="fas fa-search"></i> Perplexity
-                </a>
-                <a href="https://www.phind.com" target="_blank" class="resource-link">
-                    <i class="fas fa-flask"></i> Phind
-                </a>
-                <a href="https://cursor.sh" target="_blank" class="resource-link">
-                    <i class="fas fa-cursor"></i> Cursor
-                </a>
-                <!-- Документация и обучение -->
-                <a href="https://stackoverflow.com" target="_blank" class="resource-link">
-                    <i class="fab fa-stack-overflow"></i> Stack Overflow
-                </a>
-                <a href="https://github.com" target="_blank" class="resource-link">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-                <a href="https://habr.com/ru" target="_blank" class="resource-link">
-                    <i class="fas fa-newspaper"></i> Habr
-                </a>
-                <a href="https://leetcode.com" target="_blank" class="resource-link">
-                    <i class="fas fa-puzzle-piece"></i> LeetCode
-                </a>
-                <a href="https://www.youtube.com/@codeburst" target="_blank" class="resource-link">
-                    <i class="fab fa-youtube"></i> YouTube
-                </a>
-                <a href="https://roadmap.sh" target="_blank" class="resource-link">
-                    <i class="fas fa-map"></i> Roadmap.sh
-                </a>
-                <!-- Инструменты -->
-                <a href="https://code.visualstudio.com" target="_blank" class="resource-link">
-                    <i class="fas fa-terminal"></i> VS Code
-                </a>
-                <a href="https://www.figma.com" target="_blank" class="resource-link">
-                    <i class="fab fa-figma"></i> Figma
-                </a>
-                <a href="https://www.postman.com" target="_blank" class="resource-link">
-                    <i class="fas fa-envelope"></i> Postman
-                </a>
-                <a href="https://canva.com" target="_blank" class="resource-link">
-                    <i class="fas fa-paint-brush"></i> Canva
-                </a>
-                <a href="https://codepen.io" target="_blank" class="resource-link">
-                    <i class="fas fa-code"></i> CodePen
-                </a>
-                <a href="https://replit.com" target="_blank" class="resource-link">
-                    <i class="fas fa-play"></i> Replit
-                </a>
-            </div>
-        </div>
-
-        <!-- ===== МИНИ-КЛИКЕР ===== -->
-        <div class="clicker-section" id="clickerSection">
-            <h3>
-                <i class="fas fa-hand-pointer"></i> Мини-кликер
-            </h3>
-            <div class="clicker-display">
-                👆 <span id="clickCount">0</span>
-            </div>
-            
-            <!-- Кнопка-ссылка: изначально кнопка, после 100 кликов становится ссылкой на ItMouse -->
-            <a href="https://itmouse.by" target="_blank" class="clicker-btn" id="clickerBtn">
-                <i class="fas fa-mouse-pointer"></i> Кликни меня!
-            </a>
-            <br>
-            <button class="clicker-reset" id="resetBtn">Сбросить счёт</button>
-        </div>
-
-        <!-- ===== КОНТАКТЫ УДАЛЕНЫ ===== -->
-
-        <div class="footer-note">
-            <i class="far fa-copyright" style="margin-right: 4px;"></i> 2026 · Влад Б. · сделано с <i class="fas fa-heart"></i>
-        </div>
-
+    <h1>Влад Б.</h1>
+    <div class="subhead">
+        Доброй ночи! 🌙 Помогаю брендам и специалистам выглядеть уверенно в цифровой среде.<br>
+        Лаконичный дизайн, чистая вёрстка, внимание к деталям.
     </div>
 
-    <!-- TOAST -->
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMessage">Спасибо! Я свяжусь с вами</span>
+    <div class="badge">💼 персональная визитка</div>
+
+    <!-- Блок с преимуществами -->
+    <div class="features">
+        <div class="feature">🎨 Дизайн — уникальный стиль</div>
+        <div class="feature">📱 Адаптив — работает везде</div>
+        <div class="feature">⚡ Скорость — оптимизация</div>
     </div>
 
-    <!-- ============ JAVASCRIPT ============ -->
-    <script>
-        (function() {
-            'use strict';
+    <!-- Мини-кликер -->
+    <div class="clicker-area">
+        <p>👆 Мини-кликер</p>
+        <div class="click-count" id="clickCounter">0</div>
+        <button class="click-btn" id="clickButton">Кликни меня!</button>
+    </div>
 
-            // ——— Элементы ———
-            const card = document.getElementById('card');
-            const toast = document.getElementById('toast');
-            const toastMessage = document.getElementById('toastMessage');
-            const projectBtn = document.getElementById('projectBtn');
-            const deepseekBtn = document.getElementById('deepseekBtn');
-            const sunoBtn = document.getElementById('sunoBtn');
-            const jsBtn = document.getElementById('jsBtn');
-            const statusText = document.getElementById('statusText');
-            const avatar = document.getElementById('avatar');
-            const greetingText = document.getElementById('greetingText');
+    <!-- ===== РАСШИРЕННЫЙ БЛОК СО ССЫЛКАМИ ===== -->
+    <div class="links-section">
+        <h3>🌐 Полезные ресурсы для программистов</h3>
 
-            // ——— Элементы кликера ———
-            const clickCountSpan = document.getElementById('clickCount');
-            const clickerBtn = document.getElementById('clickerBtn');
-            const resetBtn = document.getElementById('resetBtn');
+        <div class="links-grid">
+            <a href="https://github.com" target="_blank">🐙 GitHub</a>
+            <a href="https://stackoverflow.com" target="_blank">📚 Stack Overflow</a>
+            <a href="https://habr.com" target="_blank">📰 Habr</a>
+            <a href="https://leetcode.com" target="_blank">🧩 LeetCode</a>
+            <a href="https://codepen.io" target="_blank">✏️ CodePen</a>
+            <a href="https://developer.mozilla.org" target="_blank">📖 MDN Web Docs</a>
+        </div>
 
-            // ——— Состояние кликера ———
-            let clickCount = 0;
-            const TARGET = 100;
+        <div class="links-divider">— • —</div>
 
-            // ——— Плавное появление ———
-            setTimeout(() => {
-                card.classList.add('visible');
-            }, 100);
+        <div class="links-grid">
+            <a href="https://t.me/proglib" target="_blank">📱 Proglib (Telegram)</a>
+            <a href="https://t.me/php" target="_blank">🐘 PHP News</a>
+            <a href="https://t.me/pydaily" target="_blank">🐍 Python Daily</a>
+            <a href="https://t.me/frontend_notes" target="_blank">🎨 Frontend Notes</a>
+            <a href="https://t.me/javascript" target="_blank">⚡ JavaScript News</a>
+            <a href="https://t.me/golang" target="_blank">🐹 Go News</a>
+        </div>
+    </div>
+    <!-- ========================================= -->
 
-            // ——— Функция показа тоста ———
-            function showToast(message, icon = 'fas fa-check-circle') {
-                toastMessage.textContent = message;
-                const iconEl = toast.querySelector('i');
-                iconEl.className = icon;
-                toast.classList.add('show');
-                clearTimeout(toast._timeout);
-                toast._timeout = setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
-            }
+    <!-- Контактная кнопка и сообщение -->
+    <button class="contact-btn" id="contactBtn">✉️ Связаться</button>
+    <div class="footer-message" id="thankYouMessage">
+        <span>⬅️</span> Нажмите, чтобы я связался с вами
+    </div>
 
-            // ——— ЛОГИКА КЛИКЕРА ———
-            function updateClickDisplay() {
-                clickCountSpan.textContent = clickCount;
-                if (clickCount >= TARGET) {
-                    clickCountSpan.className = 'highlight';
-                    // Превращаем кнопку в ссылку на ItMouse
-                    clickerBtn.href = 'https://itmouse.by';
-                    clickerBtn.target = '_blank';
-                    clickerBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Перейти на ItMouse';
-                    clickerBtn.classList.add('unlocked');
-                } else {
-                    clickCountSpan.className = '';
-                    // Возвращаем кнопке её обычный вид
-                    clickerBtn.href = '#';
-                    clickerBtn.target = '';
-                    clickerBtn.innerHTML = '<i class="fas fa-mouse-pointer"></i> Кликни меня!';
-                    clickerBtn.classList.remove('unlocked');
-                }
-            }
+    <div class="note">Влад Б. — всегда на связи</div>
+</div>
 
-            // Обработчик клика по кнопке (только когда она НЕ ссылка)
-            clickerBtn.addEventListener('click', function(e) {
-                // Если кнопка уже разблокирована (href ведёт на ItMouse), ничего не делаем
-                if (clickCount >= TARGET) {
-                    return;
-                }
-                
-                e.preventDefault();
-                clickCount++;
-                updateClickDisplay();
+<script>
+    // Мини-кликер
+    let count = 0;
+    const counterEl = document.getElementById('clickCounter');
+    const clickBtn = document.getElementById('clickButton');
 
-                // Анимация кнопки
-                this.style.transform = 'scale(0.92)';
-                setTimeout(() => { this.style.transform = ''; }, 100);
+    clickBtn.addEventListener('click', function() {
+        count++;
+        counterEl.textContent = count;
+    });
 
-                // Проверяем, достигли ли 100 кликов
-                if (clickCount === TARGET) {
-                    showToast('🎉 Поздравляю! ItMouse разблокирован!', 'fas fa-gift');
-                }
-            });
+    // Кнопка "Связаться"
+    const contactBtn = document.getElementById('contactBtn');
+    const messageEl = document.getElementById('thankYouMessage');
 
-            resetBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                clickCount = 0;
-                updateClickDisplay();
-                clickCountSpan.style.color = '';
-                clickCountSpan.className = '';
-                showToast('🔄 Счёт сброшен', 'fas fa-undo');
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => { this.style.transform = ''; }, 100);
-            });
-
-            // ——— Кнопка "Мои проекты" (ведёт на SUNO AI профиль) ———
-            projectBtn.addEventListener('click', function(e) {
-                showToast('🚀 Открываю мои проекты на SUNO AI', 'fas fa-folder-open');
-            });
-
-            // ——— Кнопка "DeepSeek" ———
-            deepseekBtn.addEventListener('click', function(e) {
-                showToast('🧠 Переход на DeepSeek — ваш ИИ-помощник', 'fas fa-brain');
-            });
-
-            // ——— Кнопка "SUNO AI" ———
-            sunoBtn.addEventListener('click', function(e) {
-                showToast('🎵 Переход на SUNO AI — генерация музыки', 'fas fa-music');
-            });
-
-            // ——— Кнопка "JavaScript" ———
-            jsBtn.addEventListener('click', function(e) {
-                showToast('📜 Открываю документацию по JavaScript (MDN)', 'fab fa-js');
-            });
-
-            // ——— Клик по аватару ———
-            avatar.addEventListener('click', function() {
-                const greetings = [
-                    'Привет! 👋',
-                    'Влад Б. на связи!',
-                    'Рад видеть тебя здесь!',
-                    'Дизайн — моя страсть ✨',
-                    'Смотри мои проекты на SUNO! 🎵',
-                    'JavaScript — это сила! ⚡'
-                ];
-                const random = greetings[Math.floor(Math.random() * greetings.length)];
-                showToast(random, 'fas fa-smile');
-                this.style.transform = 'scale(0.92)';
-                setTimeout(() => { this.style.transform = ''; }, 200);
-            });
-
-            // ——— Динамическое приветствие ———
-            function updateGreeting() {
-                const hour = new Date().getHours();
-                let greeting = 'Доброй ночи! 🌙';
-                if (hour >= 6 && hour < 12) greeting = 'Доброе утро! ☀️';
-                else if (hour >= 12 && hour < 18) greeting = 'Добрый день! 🌤️';
-                else if (hour >= 18 && hour < 23) greeting = 'Добрый вечер! 🌅';
-                const baseText = ' Помогаю брендам и специалистам выглядеть уверенно в цифровой среде. Лаконичный дизайн, чистая вёрстка, внимание к деталям.';
-                greetingText.innerHTML = `${greeting} ${baseText}`;
-            }
-            updateGreeting();
-
-            // ——— Счётчик с анимацией ———
-            function animateCounter(elementId, target, suffix = '') {
-                const span = document.getElementById(elementId);
-                if (!span) return;
-                let current = 0;
-                const step = Math.max(1, Math.floor(target / 30));
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    span.textContent = current + suffix;
-                }, 40);
-            }
-
-            setTimeout(() => {
-                animateCounter('projectsNum', 87);
-                animateCounter('clientsNum', 42);
-                animateCounter('expNum', 8);
-            }, 400);
-
-            // ——— Смена статуса ———
-            const statuses = [
-                'всегда на связи',
-                'открыт к диалогу',
-                'вдохновляюсь ☕',
-                'готов к проектам'
-            ];
-            let statusIndex = 0;
-            setInterval(() => {
-                statusIndex = (statusIndex + 1) % statuses.length;
-                statusText.textContent = statuses[statusIndex];
-            }, 8000);
-
-            console.log('🌙 Сайт "Помощь программисту" с кликером и ItMouse загружен!');
-        })();
-    </script>
+    contactBtn.addEventListener('click', function() {
+        messageEl.innerHTML = '✅ Спасибо! Я свяжусь с вами';
+        messageEl.style.borderColor = '#2d8cff';
+        messageEl.style.color = '#d3e4ff';
+    });
+</script>
 
 </body>
 </html>
