@@ -1,52 +1,314 @@
-# 💼 Портфолио-сайт: Влад Б. — Помощь программисту
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Влад Б. — дизайн и вёрстка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0b0d0f;
+            color: #eaeef2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .card {
+            background: #15191e;
+            max-width: 800px;
+            width: 100%;
+            padding: 40px 35px;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            text-align: center;
+            border: 1px solid #2a3138;
+        }
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+        .subhead {
+            font-size: 1.1rem;
+            color: #a0abb8;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+        .badge {
+            display: inline-block;
+            background: #1f2a33;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #b6c4d0;
+            margin-bottom: 30px;
+        }
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0 35px;
+        }
+        .feature {
+            background: #1e262e;
+            padding: 14px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #d3dce6;
+            border: 1px solid #2d3842;
+        }
+        .clicker-area {
+            background: #1a2128;
+            padding: 25px 20px;
+            border-radius: 24px;
+            margin: 10px 0 25px;
+            border: 1px solid #2a333c;
+        }
+        .clicker-area p {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #cbd5e0;
+        }
+        .click-btn {
+            background: #2d8cff;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            padding: 12px 40px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 6px 0 #1a4f8c;
+            display: inline-block;
+        }
+        .click-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 1px 0 #1a4f8c;
+        }
+        .click-count {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: white;
+            margin: 15px 0 5px;
+        }
+        .footer-message {
+            background: #1f2a33;
+            padding: 14px;
+            border-radius: 60px;
+            color: #b6c9db;
+            font-size: 0.95rem;
+            border: 1px solid #2d3842;
+            margin-top: 15px;
+        }
+        .footer-message span {
+            color: #6f8fb0;
+        }
+        .contact-btn {
+            background: transparent;
+            border: 2px solid #2d8cff;
+            color: #2d8cff;
+            padding: 12px 32px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 20px;
+        }
+        .contact-btn:hover {
+            background: #2d8cff;
+            color: white;
+        }
 
-<div align="center">
-  <img src="[ССЫЛКА НА СКРИНШОТ ВАШЕГО САЙТА]" alt="Превью сайта" width="80%">
-  <br>
-  <strong>Современная визитка-портфолио с интерактивными элементами</strong>
+        .links-section {
+            margin: 25px 0 15px;
+            text-align: left;
+        }
+        .links-section h3 {
+            font-size: 1rem;
+            color: #889fb3;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+            text-align: center;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 10px;
+        }
+        .links-grid a {
+            color: #8aadcf;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 14px;
+            border-radius: 40px;
+            background: #1a222a;
+            border: 1px solid #2d3842;
+            transition: 0.2s;
+            text-align: center;
+            display: block;
+        }
+        .links-grid a:hover {
+            background: #2d8cff;
+            color: white;
+            border-color: #2d8cff;
+            transform: scale(1.02);
+        }
+        .links-divider {
+            color: #3f4d5a;
+            font-size: 0.8rem;
+            text-align: center;
+            margin: 15px 0 10px;
+            letter-spacing: 1px;
+        }
+
+        .note {
+            font-size: 0.8rem;
+            color: #5f7387;
+            margin-top: 18px;
+        }
+
+        /* Стили для моих ссылок */
+        .my-links {
+            margin: 25px 0;
+            padding: 20px;
+            background: #1a222a;
+            border-radius: 20px;
+            border: 1px solid #2d3842;
+        }
+        .my-links a {
+            display: inline-block;
+            padding: 12px 28px;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 5px;
+            transition: 0.2s;
+        }
+        .my-links a:hover {
+            transform: scale(1.05);
+        }
+        .my-links a:first-child {
+            background: #0088cc;
+        }
+        .my-links a:first-child:hover {
+            background: #00a3ff;
+        }
+        .my-links a:nth-child(2) {
+            background: #7B2FBE;
+        }
+        .my-links a:nth-child(2):hover {
+            background: #9B4DDE;
+        }
+        .my-links a:last-child {
+            background: #e34c26;
+        }
+        .my-links a:last-child:hover {
+            background: #f05a30;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h1>Влад Б.</h1>
+    <div class="subhead">
+        Доброй ночи! 🌙 Помогаю брендам и специалистам выглядеть уверенно в цифровой среде.<br>
+        Лаконичный дизайн, чистая вёрстка, внимание к деталям.
+    </div>
+
+    <div class="badge">💼 персональная визитка</div>
+
+    <div class="features">
+        <div class="feature">🎨 Дизайн — уникальный стиль</div>
+        <div class="feature">📱 Адаптив — работает везде</div>
+        <div class="feature">⚡ Скорость — оптимизация</div>
+    </div>
+
+    <div class="clicker-area">
+        <p>👆 Мини-кликер</p>
+        <div class="click-count" id="clickCounter">0</div>
+        <button class="click-btn" id="clickButton">Кликни меня!</button>
+    </div>
+
+    <!-- ===== МОИ ССЫЛКИ ===== -->
+    <div class="my-links">
+        <a href="https://t.me/vlad2012bbot" target="_blank" rel="noopener noreferrer">
+            🤖 @vlad2012bbot
+        </a>
+        <a href="https://suno.com/@xxxdel555" target="_blank" rel="noopener noreferrer">
+            🎵 @xxxdel555
+        </a>
+        <a href="https://xxxdel555-tech.github.io/geometry-dash-2/" target="_blank" rel="noopener noreferrer">
+            🎮 Geometry Dash
+        </a>
+    </div>
+    <!-- ===================== -->
+
+    <div class="links-section">
+        <h3>🌐 Полезные ресурсы для программистов</h3>
+
+        <div class="links-grid">
+            <a href="https://github.com" target="_blank">🐙 GitHub</a>
+            <a href="https://stackoverflow.com" target="_blank">📚 Stack Overflow</a>
+            <a href="https://habr.com" target="_blank">📰 Habr</a>
+            <a href="https://leetcode.com" target="_blank">🧩 LeetCode</a>
+            <a href="https://codepen.io" target="_blank">✏️ CodePen</a>
+            <a href="https://developer.mozilla.org" target="_blank">📖 MDN Web Docs</a>
+        </div>
+
+        <div class="links-divider">— • —</div>
+
+        <div class="links-grid">
+            <a href="https://t.me/proglib" target="_blank">📱 Proglib (Telegram)</a>
+            <a href="https://t.me/php" target="_blank">🐘 PHP News</a>
+            <a href="https://t.me/pydaily" target="_blank">🐍 Python Daily</a>
+            <a href="https://t.me/frontend_notes" target="_blank">🎨 Frontend Notes</a>
+            <a href="https://t.me/javascript" target="_blank">⚡ JavaScript News</a>
+            <a href="https://t.me/golang" target="_blank">🐹 Go News</a>
+        </div>
+    </div>
+
+    <button class="contact-btn" id="contactBtn">✉️ Связаться</button>
+    <div class="footer-message" id="thankYouMessage">
+        <span>⬅️</span> Нажмите, чтобы я связался с вами
+    </div>
+
+    <div class="note">Влад Б. — всегда на связи</div>
 </div>
 
----
+<script>
+    let count = 0;
+    const counterEl = document.getElementById('clickCounter');
+    const clickBtn = document.getElementById('clickButton');
 
-## 📖 Описание
+    clickBtn.addEventListener('click', function() {
+        count++;
+        counterEl.textContent = count;
+    });
 
-Этот репозиторий содержит код моего персонального сайта-портфолио. Страница представляет собой визитку, которая совмещает в себе информацию обо мне, как о специалисте, и полезные инструменты для посетителей. Основные задачи сайта — продемонстрировать мой стиль, навыки в веб-разработке и предоставить удобную навигацию по моим проектам и полезным ресурсам.
+    const contactBtn = document.getElementById('contactBtn');
+    const messageEl = document.getElementById('thankYouMessage');
 
-### Ключевые особенности:
+    contactBtn.addEventListener('click', function() {
+        messageEl.innerHTML = '✅ Спасибо! Я свяжусь с вами';
+        messageEl.style.borderColor = '#2d8cff';
+        messageEl.style.color = '#d3e4ff';
+    });
+</script>
 
-- **Тёмная тема:** Стильный и современный дизайн, комфортный для глаз.
-- **Адаптивная вёрстка:** Корректно отображается на всех устройствах, от смартфонов до десктопов.
-- **Интерактивный кликер:** Игровой элемент, который разблокирует ссылку на мой профиль на **ItMouse** после 100 кликов.
-- **Динамические счетчики:** Анимированное отображение количества проектов, клиентов и лет опыта.
-- **Всплывающие уведомления:** Обратная связь на все действия пользователя.
-- **Блок полезных ресурсов:** Быстрый доступ к популярным ИИ-инструментам, документации и сообществам для разработчиков.
-
----
-
-## 🛠️ Используемые технологии
-
-<div align="center">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/Font_Awesome-528DD7?style=for-the-badge&logo=fontawesome&logoColor=white" alt="Font Awesome" />
-</div>
-
----
-
-## 📁 Структура проекта
-
-Проект состоит из одного HTML-файла, который включает в себя все стили и скрипты:
-
-- `index.html` — основной файл, содержащий:
-    - **Разметку** всех секций сайта.
-    - **Встроенные CSS-стили** для тёмной темы и адаптивного дизайна.
-    - **Встроенный JavaScript** для всей интерактивности (кликер, тосты, анимации, динамические приветствия).
-
----
-
-## 🚀 Как запустить проект локально
-
-1.  **Клонируйте репозиторий:**
-    ```bash
-    git clone https://github.com/xxxdel555-tech/portfolio.git
+</body>
+</html>
