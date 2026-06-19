@@ -211,6 +211,7 @@
             font-weight: bold;
             transition: background 0.2s, transform 0.1s;
             font-size: 1rem;
+            margin: 0 6px;
         }
         .bot-link:hover {
             background: #00a3ff;
@@ -218,6 +219,34 @@
         }
         .bot-link:active {
             transform: scale(0.97);
+        }
+
+        /* ===== СТИЛИ ДЛЯ ССЫЛКИ SUNO ===== */
+        .suno-link {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #7B2FBE;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.2s, transform 0.1s;
+            font-size: 1rem;
+            margin: 0 6px;
+        }
+        .suno-link:hover {
+            background: #9B4DDE;
+            transform: scale(1.03);
+        }
+        .suno-link:active {
+            transform: scale(0.97);
+        }
+
+        .links-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
         /* ================================== */
     </style>
@@ -254,14 +283,33 @@
         <p>
             Попробуйте <strong>БотинокБота</strong> — он поможет вам с выбором обуви!
         </p>
-        <a href="https://t.me/vlad2012bbot" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="bot-link">
-           @vlad2012bbot
-        </a>
+        <div class="links-row">
+            <a href="https://t.me/vlad2012bbot" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="bot-link">
+               @vlad2012bbot
+            </a>
+        </div>
     </div>
     <!-- ===== КОНЕЦ БЛОКА С БОТОМ ===== -->
+
+    <!-- ===== НАЧАЛО БЛОКА SUNO ===== -->
+    <div class="bot-section" style="margin-top: 0;">
+        <h3>🎵 Мои треки в SUNO</h3>
+        <p>
+            Слушайте мои музыкальные эксперименты!
+        </p>
+        <div class="links-row">
+            <a href="https://suno.com/@xxxdel555" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="suno-link">
+               @xxxdel555
+            </a>
+        </div>
+    </div>
+    <!-- ===== КОНЕЦ БЛОКА SUNO ===== -->
 
     <!-- ===== РАСШИРЕННЫЙ БЛОК СО ССЫЛКАМИ ===== -->
     <div class="links-section">
