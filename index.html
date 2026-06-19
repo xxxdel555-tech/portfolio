@@ -179,6 +179,48 @@
             color: #5f7387;
             margin-top: 18px;
         }
+
+        /* Стили для блока с ботом (адаптированы под тёмную тему) */
+        .bot-section {
+            margin-top: 30px;
+            padding: 24px 20px;
+            text-align: center;
+            background: #1a222a;
+            border-radius: 20px;
+            border: 1px solid #2d3842;
+        }
+        .bot-section h3 {
+            margin-bottom: 10px;
+            color: #eaeef2;
+            font-size: 1.3rem;
+        }
+        .bot-section p {
+            margin-bottom: 16px;
+            color: #a0abb8;
+            font-size: 0.95rem;
+        }
+        .bot-section p strong {
+            color: #eaeef2;
+        }
+        .bot-link {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #0088cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.2s, transform 0.1s;
+            border: none;
+            font-size: 1rem;
+        }
+        .bot-link:hover {
+            background: #00a3ff;
+            transform: scale(1.03);
+        }
+        .bot-link:active {
+            transform: scale(0.97);
+        }
     </style>
 </head>
 <body>
@@ -206,6 +248,21 @@
         <div class="click-count" id="clickCounter">0</div>
         <button class="click-btn" id="clickButton">Кликни меня!</button>
     </div>
+
+    <!-- НАЧАЛО БЛОКА С БОТОМ -->
+    <div class="bot-section">
+        <h3>🤖 Мой Telegram-бот</h3>
+        <p>
+            Попробуйте <strong>БотинокБота</strong> — он поможет вам с выбором обуви!
+        </p>
+        <a href="https://t.me/vlad2012bbot" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="bot-link">
+           @vlad2012bbot
+        </a>
+    </div>
+    <!-- КОНЕЦ БЛОКА С БОТОМ -->
 
     <!-- ===== РАСШИРЕННЫЙ БЛОК СО ССЫЛКАМИ ===== -->
     <div class="links-section">
